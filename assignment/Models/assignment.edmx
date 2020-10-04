@@ -1,0 +1,588 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="assignment.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="assignmentStoreContainer">
+    <EntitySet Name="Users" EntityType="assignment.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Staffs" EntityType="assignment.Store.Staffs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TheoreticalClasses" EntityType="assignment.Store.TheoreticalClasses" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TrainClasses" EntityType="assignment.Store.TrainClasses" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserGames" EntityType="assignment.Store.UserGames" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StaffGames" EntityType="assignment.Store.StaffGames" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Games" EntityType="assignment.Store.Games" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="UserStaff" Association="assignment.Store.UserStaff">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Staff" EntitySet="Staffs" />
+    </AssociationSet>
+    <AssociationSet Name="UserTheoreticalClass" Association="assignment.Store.UserTheoreticalClass">
+      <End Role="User" EntitySet="Users" />
+      <End Role="TheoreticalClass" EntitySet="TheoreticalClasses" />
+    </AssociationSet>
+    <AssociationSet Name="UserTrainClass" Association="assignment.Store.UserTrainClass">
+      <End Role="User" EntitySet="Users" />
+      <End Role="TrainClass" EntitySet="TrainClasses" />
+    </AssociationSet>
+    <AssociationSet Name="UserUserGame" Association="assignment.Store.UserUserGame">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserGame" EntitySet="UserGames" />
+    </AssociationSet>
+    <AssociationSet Name="StaffStaffGame" Association="assignment.Store.StaffStaffGame">
+      <End Role="Staff" EntitySet="Staffs" />
+      <End Role="StaffGame" EntitySet="StaffGames" />
+    </AssociationSet>
+    <AssociationSet Name="StaffTheoreticalClass" Association="assignment.Store.StaffTheoreticalClass">
+      <End Role="Staff" EntitySet="Staffs" />
+      <End Role="TheoreticalClass" EntitySet="TheoreticalClasses" />
+    </AssociationSet>
+    <AssociationSet Name="StaffTrainClass" Association="assignment.Store.StaffTrainClass">
+      <End Role="Staff" EntitySet="Staffs" />
+      <End Role="TrainClass" EntitySet="TrainClasses" />
+    </AssociationSet>
+    <AssociationSet Name="GameStaffGame" Association="assignment.Store.GameStaffGame">
+      <End Role="Game" EntitySet="Games" />
+      <End Role="StaffGame" EntitySet="StaffGames" />
+    </AssociationSet>
+    <AssociationSet Name="GameUserGame" Association="assignment.Store.GameUserGame">
+      <End Role="Game" EntitySet="Games" />
+      <End Role="UserGame" EntitySet="UserGames" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PhoneNo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BirthDate" Type="datetime" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Staff_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Staffs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PhoneNo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BirthDate" Type="time" Nullable="true" />
+    <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TheoreticalClasses">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Time" Type="datetime" Nullable="false" />
+    <Property Name="RoomNo" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserId1" Type="int" Nullable="false" />
+    <Property Name="StaffId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TrainClasses">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Time" Type="datetime" Nullable="false" />
+    <Property Name="RoomNo" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Outcome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserId1" Type="int" Nullable="false" />
+    <Property Name="StaffId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserGames">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GameResult" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="GameId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StaffGames">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GameResult" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="StaffId" Type="int" Nullable="false" />
+    <Property Name="GameId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Games">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Time" Type="datetime" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="UserStaff">
+    <End Role="User" Type="assignment.Store.Users" Multiplicity="*" />
+    <End Role="Staff" Type="assignment.Store.Staffs" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="Staff_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserTheoreticalClass">
+    <End Role="User" Type="assignment.Store.Users" Multiplicity="1" />
+    <End Role="TheoreticalClass" Type="assignment.Store.TheoreticalClasses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TheoreticalClass">
+        <PropertyRef Name="UserId1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserTrainClass">
+    <End Role="User" Type="assignment.Store.Users" Multiplicity="1" />
+    <End Role="TrainClass" Type="assignment.Store.TrainClasses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TrainClass">
+        <PropertyRef Name="UserId1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserUserGame">
+    <End Role="User" Type="assignment.Store.Users" Multiplicity="1" />
+    <End Role="UserGame" Type="assignment.Store.UserGames" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserGame">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StaffStaffGame">
+    <End Role="Staff" Type="assignment.Store.Staffs" Multiplicity="1" />
+    <End Role="StaffGame" Type="assignment.Store.StaffGames" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StaffGame">
+        <PropertyRef Name="StaffId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StaffTheoreticalClass">
+    <End Role="Staff" Type="assignment.Store.Staffs" Multiplicity="1" />
+    <End Role="TheoreticalClass" Type="assignment.Store.TheoreticalClasses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TheoreticalClass">
+        <PropertyRef Name="StaffId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StaffTrainClass">
+    <End Role="Staff" Type="assignment.Store.Staffs" Multiplicity="1" />
+    <End Role="TrainClass" Type="assignment.Store.TrainClasses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TrainClass">
+        <PropertyRef Name="StaffId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GameStaffGame">
+    <End Role="Game" Type="assignment.Store.Games" Multiplicity="1" />
+    <End Role="StaffGame" Type="assignment.Store.StaffGames" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Game">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StaffGame">
+        <PropertyRef Name="GameId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GameUserGame">
+    <End Role="Game" Type="assignment.Store.Games" Multiplicity="1" />
+    <End Role="UserGame" Type="assignment.Store.UserGames" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Game">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserGame">
+        <PropertyRef Name="GameId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="assignment" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="assignmentContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Users" EntityType="assignment.User" />
+          <EntitySet Name="Staffs" EntityType="assignment.Staff" />
+          <EntitySet Name="TheoreticalClasses" EntityType="assignment.TheoreticalClass" />
+          <EntitySet Name="TrainClasses" EntityType="assignment.TrainClass" />
+          <EntitySet Name="UserGames" EntityType="assignment.UserGame" />
+          <EntitySet Name="StaffGames" EntityType="assignment.StaffGame" />
+          <AssociationSet Name="UserStaff" Association="assignment.UserStaff">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Staff" EntitySet="Staffs" />
+          </AssociationSet>
+          <AssociationSet Name="UserTheoreticalClass" Association="assignment.UserTheoreticalClass">
+            <End Role="User" EntitySet="Users" />
+            <End Role="TheoreticalClass" EntitySet="TheoreticalClasses" />
+          </AssociationSet>
+          <EntitySet Name="Games" EntityType="assignment.Game" />
+          <AssociationSet Name="UserTrainClass" Association="assignment.UserTrainClass">
+            <End Role="User" EntitySet="Users" />
+            <End Role="TrainClass" EntitySet="TrainClasses" />
+          </AssociationSet>
+          <AssociationSet Name="UserUserGame" Association="assignment.UserUserGame">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserGame" EntitySet="UserGames" />
+          </AssociationSet>
+          <AssociationSet Name="StaffStaffGame" Association="assignment.StaffStaffGame">
+            <End Role="Staff" EntitySet="Staffs" />
+            <End Role="StaffGame" EntitySet="StaffGames" />
+          </AssociationSet>
+          <AssociationSet Name="StaffTheoreticalClass" Association="assignment.StaffTheoreticalClass">
+            <End Role="Staff" EntitySet="Staffs" />
+            <End Role="TheoreticalClass" EntitySet="TheoreticalClasses" />
+          </AssociationSet>
+          <AssociationSet Name="StaffTrainClass" Association="assignment.StaffTrainClass">
+            <End Role="Staff" EntitySet="Staffs" />
+            <End Role="TrainClass" EntitySet="TrainClasses" />
+          </AssociationSet>
+          <AssociationSet Name="GameStaffGame" Association="assignment.GameStaffGame">
+            <End Role="Game" EntitySet="Games" />
+            <End Role="StaffGame" EntitySet="StaffGames" />
+          </AssociationSet>
+          <AssociationSet Name="GameUserGame" Association="assignment.GameUserGame">
+            <End Role="Game" EntitySet="Games" />
+            <End Role="UserGame" EntitySet="UserGames" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="PhoneNo" Type="String" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" />
+          <Property Name="UserId" Type="String" Nullable="false" />
+          <NavigationProperty Name="Staff" Relationship="assignment.UserStaff" FromRole="User" ToRole="Staff" />
+          <NavigationProperty Name="TheoreticalClasses" Relationship="assignment.UserTheoreticalClass" FromRole="User" ToRole="TheoreticalClass" />
+          <NavigationProperty Name="TrainClasses" Relationship="assignment.UserTrainClass" FromRole="User" ToRole="TrainClass" />
+          <NavigationProperty Name="UserGames" Relationship="assignment.UserUserGame" FromRole="User" ToRole="UserGame" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="PhoneNo" Type="String" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="true" />
+          <Property Name="UserId" Type="String" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="assignment.UserStaff" FromRole="Staff" ToRole="User" />
+          <NavigationProperty Name="StaffGames" Relationship="assignment.StaffStaffGame" FromRole="Staff" ToRole="StaffGame" />
+          <NavigationProperty Name="TheoreticalClasses" Relationship="assignment.StaffTheoreticalClass" FromRole="Staff" ToRole="TheoreticalClass" />
+          <NavigationProperty Name="TrainClasses" Relationship="assignment.StaffTrainClass" FromRole="Staff" ToRole="TrainClass" />
+        </EntityType>
+        <EntityType Name="TheoreticalClass">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Time" Type="DateTime" Nullable="false" />
+          <Property Name="RoomNo" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="String" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="assignment.UserTheoreticalClass" FromRole="TheoreticalClass" ToRole="User" />
+          <Property Name="UserId1" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Staff" Relationship="assignment.StaffTheoreticalClass" FromRole="TheoreticalClass" ToRole="Staff" />
+          <Property Name="StaffId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TrainClass">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Time" Type="DateTime" Nullable="false" />
+          <Property Name="RoomNo" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="String" Nullable="false" />
+          <Property Name="Outcome" Type="String" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="assignment.UserTrainClass" FromRole="TrainClass" ToRole="User" />
+          <Property Name="UserId1" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Staff" Relationship="assignment.StaffTrainClass" FromRole="TrainClass" ToRole="Staff" />
+          <Property Name="StaffId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserGame">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GameResult" Type="String" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="assignment.UserUserGame" FromRole="UserGame" ToRole="User" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Game" Relationship="assignment.GameUserGame" FromRole="UserGame" ToRole="Game" />
+          <Property Name="GameId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StaffGame">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GameResult" Type="String" Nullable="false" />
+          <NavigationProperty Name="Staff" Relationship="assignment.StaffStaffGame" FromRole="StaffGame" ToRole="Staff" />
+          <Property Name="StaffId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Game" Relationship="assignment.GameStaffGame" FromRole="StaffGame" ToRole="Game" />
+          <Property Name="GameId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="UserStaff">
+          <End Type="assignment.User" Role="User" Multiplicity="*" />
+          <End Type="assignment.Staff" Role="Staff" Multiplicity="1" />
+        </Association>
+        <Association Name="UserTheoreticalClass">
+          <End Type="assignment.User" Role="User" Multiplicity="1" />
+          <End Type="assignment.TheoreticalClass" Role="TheoreticalClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TheoreticalClass">
+              <PropertyRef Name="UserId1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Time" Type="DateTime" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" />
+          <NavigationProperty Name="StaffGames" Relationship="assignment.GameStaffGame" FromRole="Game" ToRole="StaffGame" />
+          <NavigationProperty Name="UserGames" Relationship="assignment.GameUserGame" FromRole="Game" ToRole="UserGame" />
+          <Property Name="UserId" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="UserTrainClass">
+          <End Type="assignment.User" Role="User" Multiplicity="1" />
+          <End Type="assignment.TrainClass" Role="TrainClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TrainClass">
+              <PropertyRef Name="UserId1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserUserGame">
+          <End Type="assignment.User" Role="User" Multiplicity="1" />
+          <End Type="assignment.UserGame" Role="UserGame" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserGame">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="StaffStaffGame">
+          <End Type="assignment.Staff" Role="Staff" Multiplicity="1" />
+          <End Type="assignment.StaffGame" Role="StaffGame" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StaffGame">
+              <PropertyRef Name="StaffId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="StaffTheoreticalClass">
+          <End Type="assignment.Staff" Role="Staff" Multiplicity="1" />
+          <End Type="assignment.TheoreticalClass" Role="TheoreticalClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TheoreticalClass">
+              <PropertyRef Name="StaffId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="StaffTrainClass">
+          <End Type="assignment.Staff" Role="Staff" Multiplicity="1" />
+          <End Type="assignment.TrainClass" Role="TrainClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TrainClass">
+              <PropertyRef Name="StaffId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GameStaffGame">
+          <End Type="assignment.Game" Role="Game" Multiplicity="1" />
+          <End Type="assignment.StaffGame" Role="StaffGame" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StaffGame">
+              <PropertyRef Name="GameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GameUserGame">
+          <End Type="assignment.Game" Role="Game" Multiplicity="1" />
+          <End Type="assignment.UserGame" Role="UserGame" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserGame">
+              <PropertyRef Name="GameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="assignmentStoreContainer" CdmEntityContainer="assignmentContainer">
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(assignment.User)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staffs">
+      <EntityTypeMapping TypeName="IsTypeOf(assignment.Staff)">
+        <MappingFragment StoreEntitySet="Staffs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TheoreticalClasses">
+      <EntityTypeMapping TypeName="IsTypeOf(assignment.TheoreticalClass)">
+        <MappingFragment StoreEntitySet="TheoreticalClasses">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="RoomNo" ColumnName="RoomNo" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserId1" ColumnName="UserId1" />
+          <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TrainClasses">
+      <EntityTypeMapping TypeName="IsTypeOf(assignment.TrainClass)">
+        <MappingFragment StoreEntitySet="TrainClasses">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="RoomNo" ColumnName="RoomNo" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Outcome" ColumnName="Outcome" />
+          <ScalarProperty Name="UserId1" ColumnName="UserId1" />
+          <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserGames">
+      <EntityTypeMapping TypeName="IsTypeOf(assignment.UserGame)">
+        <MappingFragment StoreEntitySet="UserGames">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GameResult" ColumnName="GameResult" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StaffGames">
+      <EntityTypeMapping TypeName="IsTypeOf(assignment.StaffGame)">
+        <MappingFragment StoreEntitySet="StaffGames">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GameResult" ColumnName="GameResult" />
+          <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Games">
+      <EntityTypeMapping TypeName="IsTypeOf(assignment.Game)">
+        <MappingFragment StoreEntitySet="Games">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="UserStaff" TypeName="assignment.UserStaff" StoreEntitySet="Users">
+      <EndProperty Name="Staff">
+        <ScalarProperty Name="Id" ColumnName="Staff_Id" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

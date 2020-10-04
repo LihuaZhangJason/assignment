@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="assignmentStoreContainer" CdmEntityContainer="assignmentContainer">
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(assignment.User)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staffs">
+      <EntityTypeMapping TypeName="IsTypeOf(assignment.Staff)">
+        <MappingFragment StoreEntitySet="Staffs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TheoreticalClasses">
+      <EntityTypeMapping TypeName="IsTypeOf(assignment.TheoreticalClass)">
+        <MappingFragment StoreEntitySet="TheoreticalClasses">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="RoomNo" ColumnName="RoomNo" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserId1" ColumnName="UserId1" />
+          <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TrainClasses">
+      <EntityTypeMapping TypeName="IsTypeOf(assignment.TrainClass)">
+        <MappingFragment StoreEntitySet="TrainClasses">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="RoomNo" ColumnName="RoomNo" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Outcome" ColumnName="Outcome" />
+          <ScalarProperty Name="UserId1" ColumnName="UserId1" />
+          <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserGames">
+      <EntityTypeMapping TypeName="IsTypeOf(assignment.UserGame)">
+        <MappingFragment StoreEntitySet="UserGames">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GameResult" ColumnName="GameResult" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StaffGames">
+      <EntityTypeMapping TypeName="IsTypeOf(assignment.StaffGame)">
+        <MappingFragment StoreEntitySet="StaffGames">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GameResult" ColumnName="GameResult" />
+          <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Games">
+      <EntityTypeMapping TypeName="IsTypeOf(assignment.Game)">
+        <MappingFragment StoreEntitySet="Games">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="UserStaff" TypeName="assignment.UserStaff" StoreEntitySet="Users">
+      <EndProperty Name="Staff">
+        <ScalarProperty Name="Id" ColumnName="Staff_Id" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
